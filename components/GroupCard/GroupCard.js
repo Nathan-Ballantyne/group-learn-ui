@@ -1,15 +1,18 @@
 import PropTypes from 'prop-types';
 import styles from './GroupCard.module.scss';
+import Link from 'next/link';
 
-const GroupCard = ({ title, tags, memberCount, maxMembers }) => {
+const GroupCard = ({ id, title, tags, memberCount, maxMembers }) => {
   return (
-    <div className={styles.card}>
-      <h3>{title}</h3>
-      <p>{tags.join(', ')}</p>
-      <div>
-        Members {memberCount} out of {maxMembers}
+    <Link href={`/group/${id}`}>
+      <div className={styles.card}>
+        <h3>{title}</h3>
+        <p>{tags.join(', ')}</p>
+        <div>
+          Members {memberCount} out of {maxMembers}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

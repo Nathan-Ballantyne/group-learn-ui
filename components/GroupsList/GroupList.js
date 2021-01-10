@@ -10,6 +10,7 @@ const GroupList = () => {
         {mockGroupList.map((card) => (
           <GroupCard
             key={card.id}
+            id={card.id}
             title={card.title}
             tags={card.tags}
             memberCount={card.memberCount}

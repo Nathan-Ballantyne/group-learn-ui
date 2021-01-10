@@ -9,25 +9,30 @@ const SideNav = () => {
         icon={'/browse.svg'}
         alt='browse-groups'
         title='Browse Groups'
-        link='link to main page'
+        link=''
       />
-      <NavItem
-        icon={'/classroom.svg'}
-        alt='classroom'
-        title='Google Classroom'
-        link='link to class'
-      />
+      <div className={styles.resources}>
+        <div>Resources</div>
+        <NavItem
+          icon={'/classroom.svg'}
+          alt='classroom'
+          title='Google Classroom'
+          link='create-class'
+        />
+      </div>
       <NavItem
         icon={'/help.svg'}
         alt='help'
         title='Help &amp; Support'
-        link='link to help'
+        link='help-support'
+        className={styles.help}
       />
       <NavItem
         icon={'/account.svg'}
         alt='account'
         title='Account'
-        link='link to account'
+        link='account-profile'
+        className={styles.account}
       />
     </div>
   );
