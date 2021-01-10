@@ -1,9 +1,8 @@
 .NavItem {
-  // display: flex;
-  // align-items: flex-start;
+  font-size: 1rem;
+  font-weight: 500;
   margin: 25px;
-  // justify-content: center;
-  // align-content: center;
+  width: 98%;
   img {
     height: 35px;
     width: 35px;
@@ -12,14 +11,26 @@
     margin-bottom: 5px;
     margin-left: 5px;
   }
-
-  &:nth-child(4) {
-    position: absolute;
-    bottom: 10rem;
+  &:hover {
+    cursor: pointer;
   }
+}
 
-  &:nth-child(5) {
-    position: absolute;
-    bottom: 5rem;
-  }
+//Help and support
+.help {
+  position: absolute;
+  bottom: 10rem;
+}
+
+//account
+.account {
+  position: absolute;
+  bottom: 5rem;
+}
+
+.activeItem {
+  border-style: none solid none none;
+  border-color: #0070f3;
+  border-width: 5px;
+  color: #0070f3;
 }
