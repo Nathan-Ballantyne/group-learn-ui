@@ -3,7 +3,11 @@ import styles from './Chat.module.scss';
 const Chat = () => {
   return (
     <div className={styles.Chat}>
-      <div className={styles.textBar}></div>
+      <input
+        className={styles.textBar}
+        type='textarea'
+        placeholder='Type Message'
+      />
     </div>
   );
 };

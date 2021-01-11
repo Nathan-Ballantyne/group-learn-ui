@@ -21,4 +21,10 @@
   border-radius: 30px;
   margin-bottom: 10px;
   align-self: flex-end;
+  border: none;
+  padding-left: 1rem;
+
+  &:focus {
+    outline: none;
+  }
 }
