@@ -1,7 +1,12 @@
+import React from 'react';
 import Head from 'next/head';
 import SideNav from '../SideNav';
 
-const Document = ({ pageTitle }) => {
+interface DocumentProps {
+  pageTitle: string;
+}
+
+const Document: React.FC<DocumentProps> = ({ pageTitle }) => {
   return (
     <>
       <Head>
@@ -13,5 +18,4 @@ const Document = ({ pageTitle }) => {
     </>
   );
 };
-
 export default Document;

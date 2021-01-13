@@ -1,7 +1,10 @@
+import React from 'react';
 import styles from './SideNav.module.scss';
 import NavItem from '../NavItem';
 
-const SideNav = () => {
+interface SideNavProps {}
+
+const SideNav: React.FC<SideNavProps> = ({}) => {
   return (
     <div className={styles.SideNav}>
       <h2>Group Learn</h2>
@@ -25,17 +28,14 @@ const SideNav = () => {
         alt='help'
         title='Help &amp; Support'
         link='help-support'
-        className={styles.help}
       />
       <NavItem
         icon={'/account.svg'}
         alt='account'
         title='Account'
         link='account-profile'
-        className={styles.account}
       />
     </div>
   );
 };
-
 export default SideNav;

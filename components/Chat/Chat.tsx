@@ -1,6 +1,8 @@
+import React from 'react';
 import styles from './Chat.module.scss';
+interface ChatProps {}
 
-const Chat = () => {
+const Chat: React.FC<ChatProps> = ({}) => {
   return (
     <div className={styles.Chat}>
       <input
@@ -11,5 +13,4 @@ const Chat = () => {
     </div>
   );
 };
-
 export default Chat;

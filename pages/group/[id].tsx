@@ -1,12 +1,16 @@
+import React from 'react';
 import Document from '../../components/Document';
 import { useRouter } from 'next/router';
 import Chat from '../../components/Chat';
 import mockGroups from '../../mock/groupLists';
 
-const Group = () => {
+interface GroupProps {}
+
+const Group: React.FC<GroupProps> = ({}) => {
   const router = useRouter();
   const { id } = router.query;
-  const groupName = mockGroups.find((group) => group.id === id);
+  const group = mockGroups.find((group) => group.id === Number(id));
+  const groupName = group.title;
   return (
     <div
       style={{
@@ -22,5 +26,4 @@ const Group = () => {
     </div>
   );
 };
-
 export default Group;

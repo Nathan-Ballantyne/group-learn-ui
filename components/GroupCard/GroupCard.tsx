@@ -1,13 +1,28 @@
-import PropTypes from 'prop-types';
+import React from 'react';
 import styles from './GroupCard.module.scss';
 import Link from 'next/link';
 
-const GroupCard = ({ id, title, tags, memberCount, maxMembers }) => {
+interface GroupCardProps {
+  id: number;
+  title: string;
+  tags: string[];
+  memberCount: number;
+  maxMembers: number;
+}
+
+const GroupCard: React.FC<GroupCardProps> = ({
+  id,
+  title,
+  tags,
+  memberCount,
+  maxMembers,
+}) => {
+  const groupTags: string = tags.join(', ');
   return (
     <Link href={`/group/${id}`}>
       <div className={styles.card}>
         <h3>{title}</h3>
-        <p>{tags.join(', ')}</p>
+        <p>{groupTags}</p>
         <div>
           Members {memberCount} out of {maxMembers}
         </div>
@@ -15,12 +30,4 @@ const GroupCard = ({ id, title, tags, memberCount, maxMembers }) => {
     </Link>
   );
 };
-
-GroupCard.propTypes = {
-  title: PropTypes.string.isRequired,
-  tags: PropTypes.arrayOf(PropTypes.string),
-  memberCount: PropTypes.number,
-  maxMembers: PropTypes.number,
-};
-
 export default GroupCard;

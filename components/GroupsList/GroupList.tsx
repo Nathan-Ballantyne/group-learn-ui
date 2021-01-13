@@ -1,8 +1,11 @@
+import React from 'react';
 import GroupCard from '../GroupCard';
 import mockGroupList from '../../mock/groupLists';
 import styles from './GroupList.module.scss';
 
-const GroupList = () => {
+interface GroupListProps {}
+
+const GroupList: React.FC<GroupListProps> = ({}) => {
   return (
     <div className={styles.GroupList}>
       <div style={{ marginLeft: '1.6rem' }}>Recomended Groups</div>
@@ -21,5 +24,4 @@ const GroupList = () => {
     </div>
   );
 };
-
 export default GroupList;

@@ -1,8 +1,15 @@
+import React from 'react';
 import styles from './NavItem.module.scss';
-import PropTypes from 'prop-types';
 import Link from 'next/link';
 
-const NavItem = ({ icon, alt, title, link }) => {
+interface NavItemProps {
+  icon: string;
+  alt: string;
+  title: string;
+  link: string;
+}
+
+const NavItem: React.FC<NavItemProps> = ({ icon, alt, title, link }) => {
   let itemStyle = '';
   switch (alt) {
     case 'help':
@@ -29,12 +36,4 @@ const NavItem = ({ icon, alt, title, link }) => {
     </Link>
   );
 };
-
-NavItem.propTypes = {
-  icon: PropTypes.string.isRequired,
-  alt: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-};
-
 export default NavItem;
