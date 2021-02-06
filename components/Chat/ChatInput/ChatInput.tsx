@@ -3,7 +3,7 @@ import styles from './ChatInput.module.scss';
 
 interface ChatInputProps {
   handleKeypress: (e: any) => void;
-  send: () => void;
+  send: (e: any) => Promise<void>;
   messageInput: string;
   handleChange: (e: any) => void;
 }

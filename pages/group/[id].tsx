@@ -34,7 +34,7 @@ const Group: React.FC<GroupProps> = ({}) => {
     >
       <Document pageTitle='Chat' />
       <h2>{groupName}</h2>
-      <Chat chatHistory={chatHistory} />
+      <Chat />
     </div>
   );
 };

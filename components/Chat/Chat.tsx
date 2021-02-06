@@ -1,45 +1,68 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './Chat.module.scss';
 import ChatMessage from './ChatMessage';
 import ChatInput from './ChatInput';
 
-import { sendMsg } from '../../websocket';
+import firebase from 'firebase/app';
+import 'firebase/firestore';
+import 'firebase/auth';
 
-interface ChatProps {
-  chatHistory: string[];
-}
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useCollectionData } from 'react-firebase-hooks/firestore';
 
-const Chat: React.FC<ChatProps> = ({ chatHistory }) => {
-  const [messageInput, setMessageInput] = useState<string>('');
-  const [who, setWho] = useState<boolean>(false);
+const auth = firebase.auth();
+const firestore = firebase.firestore();
 
-  const send = () => {
-    sendMsg(messageInput);
-    setMessageInput('');
+const Chat = () => {
+  const [user, loading, error] = useAuthState(auth);
+  const dummy = useRef();
+  const messagesRef = firestore.collection('messages');
+  const query = messagesRef.orderBy('createdAt').limit(25);
+
+  const [messages] = useCollectionData(query, { idField: 'id' });
+
+  const [formValue, setFormValue] = useState('');
+
+  const sendMessage = async (e) => {
+    e.preventDefault();
+
+    const { uid, photoURL } = auth.currentUser;
+
+    await messagesRef.add({
+      text: formValue,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL,
+    });
+
+    setFormValue('');
+    dummy.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleChange = (e) => {
-    setMessageInput(e.target.value);
+    setFormValue(e.target.value);
   };
 
   const handleKeypress = (e) => {
     if (e.charCode === 13) {
-      send();
+      sendMessage(e);
     }
   };
 
   return (
     <section className={styles.chat_container}>
       <div className={styles.chat_log}>
-        {chatHistory.map((msg, index) => (
-          <ChatMessage who={who} message={msg} key={index} />
-        ))}
+        {messages &&
+          messages.map((msg) => (
+            <ChatMessage auth={auth} message={msg} key={msg.id} />
+          ))}
+        <span ref={dummy}></span>
       </div>
 
       <ChatInput
         handleKeypress={handleKeypress}
-        send={send}
-        messageInput={messageInput}
+        send={sendMessage}
+        messageInput={formValue}
         handleChange={handleChange}
       />
     </section>
