@@ -1,16 +1,48 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './Chat.module.scss';
-interface ChatProps {}
+import ChatMessage from './ChatMessage';
+import ChatInput from './ChatInput';
 
-const Chat: React.FC<ChatProps> = ({}) => {
+import { sendMsg } from '../../websocket';
+
+interface ChatProps {
+  chatHistory: string[];
+}
+
+const Chat: React.FC<ChatProps> = ({ chatHistory }) => {
+  const [messageInput, setMessageInput] = useState<string>('');
+  const [who, setWho] = useState<boolean>(false);
+
+  const send = () => {
+    sendMsg(messageInput);
+    setMessageInput('');
+  };
+
+  const handleChange = (e) => {
+    setMessageInput(e.target.value);
+  };
+
+  const handleKeypress = (e) => {
+    if (e.charCode === 13) {
+      send();
+    }
+  };
+
   return (
-    <div className={styles.Chat}>
-      <input
-        className={styles.textBar}
-        type='textarea'
-        placeholder='Type Message'
+    <section className={styles.chat_container}>
+      <div className={styles.chat_log}>
+        {chatHistory.map((msg, index) => (
+          <ChatMessage who={who} message={msg} key={index} />
+        ))}
+      </div>
+
+      <ChatInput
+        handleKeypress={handleKeypress}
+        send={send}
+        messageInput={messageInput}
+        handleChange={handleChange}
       />
-    </div>
+    </section>
   );
 };
 export default Chat;

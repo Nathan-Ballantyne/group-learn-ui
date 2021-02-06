@@ -1,16 +1,21 @@
-.Chat {
+// Conversational UI
+.chat_container {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  //   max-width: 1000px;
-  //   max-height: 600px;
+  flex-direction: column;
+  justify-content: flex-end;
   width: 50%;
   height: 800px;
-  margin-top: 1rem;
   background-color: white;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 30px;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+// Chat log
+.chat_log {
+  box-sizing: border-box;
+  padding: 16px;
+  overflow-y: auto;
 }
 
 .textBar {
@@ -27,4 +32,14 @@
   &:focus {
     outline: none;
   }
+}
+
+.message {
+  display: inline-flex;
+  padding: 10px;
+  background-color: aquamarine;
+  border-radius: 0 10px 10px 10px;
+  margin: 10px;
+  align-self: flex-start;
+  justify-self: left;
 }
