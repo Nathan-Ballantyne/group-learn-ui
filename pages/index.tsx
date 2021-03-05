@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.scss';
 import Document from '../components/Document';
 import GroupList from '../components/GroupsList';

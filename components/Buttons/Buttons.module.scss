@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.GoogleButton {
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s;
+  padding: 5px;
+  padding-right: 20px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.TitleMain {
+  font-size: 1.2rem;
+}
+
+.IconMain {
+  display: flex;
+  height: 45px;
+  width: 45px;
+  margin-right: 15px;
+  align-self: flex-start;
+}

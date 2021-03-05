@@ -9,7 +9,7 @@ interface ChatMessageProps {
 const ChatMessage: React.FC<ChatMessageProps> = ({ message, auth }) => {
   const { text, uid, photoURL } = message;
   const messageStyle =
-    uid === auth.currentUser.uid
+    uid === auth?.currentUser?.uid
       ? styles.chat_message__right
       : styles.chat_message;
   return (
